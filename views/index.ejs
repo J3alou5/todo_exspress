@@ -1,7 +1,7 @@
 <!DOCTYPE html>
   <html lang="en">
     <head>
-      <titel> todo list</titel>
+      <title>todo list</title>
       <meta charset="UFT-8">
        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
     </head>
@@ -26,10 +26,10 @@
             </div>
             <div class="card-action">
               <ul class="collection">
-                <li class="collection-item">Study HTML</li>
-                <li class="collection-item">Study CSS</li>
-                <li class="collection-item">Study JS</li>
-                <li class="collection-item">Study OOP</li>
+              <% console.log(tasks) %>
+              <% tasks.forEach((task) => { %>
+                <li class="collection-item"><%= task %></li>
+                <% }) %>
               </ul>
             </div>
           </div>
