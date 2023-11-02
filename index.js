@@ -43,7 +43,10 @@ app.get('/', (req, res) => {
     //tasks list data from file
     readFile('./tasks.json')
     .then(tasks => {
-        res.render('index', {tasks: tasks})
+        res.render('index', {
+            tasks: tasks,
+            error: null
+        })
     })
 })
 
@@ -51,6 +54,17 @@ app.get('/', (req, res) => {
 app.use(express.urlencoded({ extended: true }));
 
 app.post('/', (req,res) => {
+    let error = null
+    if(req.body.task.trim().length == 0){
+        error = 'Please insert correct task data'
+        readFile('./tasks.json')
+        .then(tasks => {
+            res.render('index', {
+                tasks: tasks,
+                error: error
+            })
+        })
+    } else {
     //tasks list data from file
     readFile('./tasks.json')
     .then(tasks => {
@@ -75,6 +89,7 @@ app.post('/', (req,res) => {
         //redirect
         res.redirect('/')
     })
+}
 })
 
 app.get('/delete-task/:taskId', (req, res) => {
@@ -92,6 +107,16 @@ app.get('/delete-task/:taskId', (req, res) => {
         res.redirect('/')
     })
 })
+
+app.post('/clear-all', (req, res) => {
+  // Teeb tasks.json tühjaks
+  const emptyTasks = [];
+  const data = JSON.stringify(emptyTasks, null, 2);
+  writeFile('tasks.json', data)
+    .then(() => {
+      res.redirect('/');
+    });
+});
 
 app.listen(3001, () => {
     console.log('Example app is started at http://localhost:3001')
