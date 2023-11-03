@@ -1,22 +1,26 @@
 [
-    {
-        "id" : 0,
-        "task": "Study HTML"
-    },
-    {
-        "id" : 1,
-        "task": "Study CSS"
-    },
-    {
-        "id" : 2,
-        "task": "Study JS"
-    },
-    {
-        "id" : 3,
-        "task": "Study OOP"
-    },
-    {
-        "id" : 4,
-        "task": "New task"
-    },
+  {
+    "id": 1,
+    "task": "Study HTML"
+  },
+  {
+    "id": 2,
+    "task": "Study CSS"
+  },
+  {
+    "id": 3,
+    "task": "Study JS"
+  },
+  {
+    "id": 4,
+    "task": "Study OOP"
+  },
+  {
+    "id": 5,
+    "task": "New task"
+  },
+  {
+    "id": 6,
+    "task": "new"
+  }
 ]
