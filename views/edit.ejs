@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <title>todo list</title>
+    <title>Edit Task</title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
@@ -20,32 +20,26 @@
                   </div>
                 </div>
               <% } %>
-              <span class="card-title">ToDo List</span>
+              <span class="card-title">Edit Task</span>
               <div class="row">
-                <form class="col s12" method="post" action="/">
+                <form class="col s12" method="post" action="/update-task/<%= task.id %>">
                   <div class="row">
                     <div class="input-field col s12">
-                      <input placeholder="Task" id="task" type="text" name="task">
-                      <label for="task">Insert Task</label>
+                      <input type="hidden" name="taskId" value="<%= task.id %>">
+                      <input placeholder="Updated Task" id="updatedTask" type="text" name="updatedTask" value="<%= task.task %>">
+                      <label for="updatedTask">Update Task</label>
                     </div>
                   </div>
-                  <input class="btn" type="submit" value="Add Task">
+                  <div class="row">
+                    <div class="col s6">
+                      <input class="btn" type="submit" value="Update Task">
+                    </div>
+                    <div class="col s6">
+                      <a class="btn" href="/">Cancel</a>
+                    </div>
+                  </div>
                 </form>
               </div>
-            </div>
-            <div class="card-action">
-              <ul class="collection">
-                <% tasks.forEach((task) => { %>
-                  <li class="collection-item">
-                    <%= task.task %>
-                    <a href="delete-task/<%= task.id %>" class="secondary-content"><i class="material-icons">delete</i></a>
-                    <a href="edit-task/<%= task.id %>" class="secondary-content"><i class="material-icons">edit</i></a>
-                  </li>
-                <% }) %>
-              </ul>
-              <form method="post" action="/clear-all">
-                <input class="btn" type="submit" value="Clear all">
-              </form>
             </div>
           </div>
         </div>
